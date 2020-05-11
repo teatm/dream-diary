@@ -1,0 +1,49 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Search by date" 
+                [(ngModel)]="date"
+            />
+            <div class="input-group-append">
+                <button class="btn btn-outline secondary" type="button" (click)="searchDate()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Diary List</h4>
+        <ul>
+            <li class="list-group-item"
+                *ngFor="let diary of diaries; let i = index" [class.active]="i==currentIndex" (click)="setActiveDiary(diary, i)">
+                {{diary.date}}
+            </li>
+        </ul>
+
+        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllDiaries()">
+            Remove All
+        </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentDiary">
+            <h4>Diary</h4>
+            <div>
+                <label><strong>Date:</strong></label> {{currentDiary.date}}
+            </div>
+            <div>
+                <label><strong>Content:</strong></label> {{currentDiary.content}}
+            </div>
+
+            <a class="badge badge-warning" href="/diary/{{currentDiary.id}}">
+                Edit
+            </a>
+        </div>
+        <div *ngIf="!currentDiary">
+            <br />
+            <p>Please click on a diary...</p>
+        </div>
+    </div>
+</div>
