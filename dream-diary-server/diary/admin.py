@@ -1,3 +1,7 @@
+from .models import Diary, ItemCategory, DiaryItem, Item
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(Diary)
+admin.site.register(ItemCategory)
+admin.site.register(Item)
+admin.site.register(DiaryItem)
