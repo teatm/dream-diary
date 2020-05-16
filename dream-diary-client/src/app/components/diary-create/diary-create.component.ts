@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { DiaryService } from 'src/app/services/diary.service';
+import { DiaryService } from '../../services/diary.service';
+import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-add-diary',
-  templateUrl: './add-diary.component.html',
-  styleUrls: ['./add-diary.component.css']
+  selector: 'app-diary-create',
+  templateUrl: './diary-create.component.html',
+  styleUrls: ['./diary-create.component.css']
 })
-export class AddDiaryComponent implements OnInit {
+export class DiaryCreateComponent implements OnInit {
   diary = {
     date: '',
     content: ''
   };
   submitted = false;
 
-  constructor(private diaryService: DiaryService) { }
+  constructor(private diaryService: DiaryService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  saveDiary() {
+  createDiary() {
     const data = {
       id: 50,
       date: this.diary.date,
@@ -30,6 +31,7 @@ export class AddDiaryComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
+          this.router.navigate(['diary-list']);
         },
         error => {
           console.log(error);

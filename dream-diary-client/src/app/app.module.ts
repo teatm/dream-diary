@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AddDiaryComponent } from './components/add-diary/add-diary.component';
+import { DiaryCreateComponent } from './components/diary-create/diary-create.component';
 import { DiaryDetailComponent } from './components/diary-detail/diary-detail.component';
 import { DiaryListComponent } from './components/diary-list/diary-list.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddDiaryComponent,
+    DiaryCreateComponent,
     DiaryDetailComponent,
-    DiaryListComponent
+    DiaryListComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,59 @@
+<div class="container" style="margin-top: 70px;">
+
+<div class="row">
+
+    <div class="col-sm-8 offset-sm-2">
+
+    <div>
+        <form>
+        <div class="form-group">
+            <label for="date">Diary Date</label>
+            <input [(ngModel)]="diary.date" type="text" name="name" class="form-control" id="date" aria-describedby="nameHelp" placeholder="Enter the date">
+            <small id="dateHelp" class="form-text text-muted">Enter the date of the diary</small>
+
+            <label for="content">Diary Content</label>
+            <textarea [(ngModel)]="diary.content" name="content" class="form-control" id="content" aria-describedby="contentHelp">
+                    </textarea>
+            <small id="contentHelp" class="form-text text-muted">Enter the content of the diary</small>
+        </div>
+        </form>
+        <button class="btn btn-primary" (click)="createDiary()">Create diary</button>
+    </div>
+    </div>
+</div>
+</div>
+
+<!-- <div class="submit_form">
+    <div *ngIf="!submitted">
+        <div class="form_group">
+            <label for="date">Date</label>
+            <input 
+                type="text"
+                class="form-control"
+                id="date"
+                required
+                [(ngModel)]="diary.date"
+                name="date"
+            />
+        </div>
+
+        <div class="form_group">
+            <label for="Content">Content</label>
+            <input
+                type="text"
+                class="form_control"
+                id="content"
+                required
+                [(ngModel)]="diary.content"
+                name="content"
+            />
+        </div>
+
+        <button (click)="saveDiary()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button class="btn btn-class" (click)="newDiary()">Add</button>
+    </div>
+</div> -->

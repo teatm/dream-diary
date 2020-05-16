@@ -8,9 +8,9 @@ import { DiaryService } from 'src/app/services/diary.service'
 })
 export class DiaryListComponent implements OnInit {
 
-  diaries: any;
-  currentDiary = null;
-  currentIndex = -1;
+  diaries;
+  selectedDiary;
+  selectedIndex = -1;
   date = '';
 
   constructor(private diaryService: DiaryService) { }
@@ -34,14 +34,18 @@ export class DiaryListComponent implements OnInit {
 
   refreshList() {
     this.retrieveDiaries();
-    this.currentDiary = null;
-    this.currentIndex = -1;
+    this.selectedDiary = null;
+    this.selectedIndex = -1;
   }
 
   setActiveDiary(diary, index) {
-    this.currentDiary = diary;
-    this.currentIndex = index;
+    this.selectedDiary = diary;
+    this.selectedIndex = index;
   }
+
+  // setActiveDiary(diary) {
+  //   this.selectedDiary = diary;
+  // }
 
   removeAllDiaries() {
     this.diaryService.getAll()
