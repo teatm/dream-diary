@@ -31,23 +31,23 @@ def diary_list(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def diary_detail(request, pk):
     try:
-        recipe = Diary.objects.get(pk=pk)
+        diary = Diary.objects.get(pk=pk)
     except Diary.DoesNotExist:
-        recipe = None
+        diary = None
 
     if request.method == 'GET':
-        recipe_serializer = DiarySerializer(recipe)
-        return JsonResponse(recipe_serializer.data)
+        diary_serializer = DiarySerializer(diary)
+        return JsonResponse(diary_serializer.data)
     elif request.method == 'PUT':
-        recipe_data = JSONParser().parse(request)
-        recipe_serializer = DiarySerializer(recipe, data=recipe_data)
-        if recipe_serializer.is_valid():
-            recipe_serializer.save()
-            return JsonResponse(recipe_serializer.data)
-        return JsonResponse(recipe_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        diary_data = JSONParser().parse(request)
+        diary_serializer = DiarySerializer(diary, data=diary_data)
+        if diary_serializer.is_valid():
+            diary_serializer.save()
+            return JsonResponse(diary_serializer.data)
+        return JsonResponse(diary_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        if recipe is not None:
-            recipe.delete()
+        if diary is not None:
+            diary.delete()
             return JsonResponse({'message': 'Diary successfully removed!'}, status=status.HTTP_204_NO_CONTENT)
 
         return JsonResponse({'message': 'No Diary found'}, status=status.HTTP_204_NO_CONTENT)

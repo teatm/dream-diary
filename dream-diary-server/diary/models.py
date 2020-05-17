@@ -18,8 +18,11 @@ class Item(models.Model):
 
 
 class Diary(models.Model):
-    date = models.DateField(auto_now_add=True, blank=False)
+    date = models.DateField(blank=False)
     content = models.CharField(max_length=200, blank=False, default='')
+
+    def __str__(self):
+        return '{} {}'.format(self.date, self.content)
 
 
 class DiaryItem(models.Model):
