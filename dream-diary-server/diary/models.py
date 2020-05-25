@@ -10,11 +10,10 @@ class ItemCategory(models.Model):
 
 class Item(models.Model):
     name = models.CharField(max_length=200, blank=False)
-    price = models.IntegerField(blank=False)
     category = models.ForeignKey(ItemCategory, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{} {}'.format(self.price, self.name)
+        return self.name
 
 
 class Diary(models.Model):
@@ -26,8 +25,9 @@ class Diary(models.Model):
 
 
 class DiaryItem(models.Model):
+    price = models.IntegerField(blank=True, default=0)
     diary = models.ForeignKey(Diary, related_name='diaryItems', on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{} {}'.format(self.item.price, self.item.name)
+        return '{} {}'.format(self.price, self.item.name)
