@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiaryService } from 'src/app/services/diary.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diary-list',
@@ -13,7 +14,7 @@ export class DiaryListComponent implements OnInit {
   selectedIndex = -1;
   date = '';
 
-  constructor(private diaryService: DiaryService) { }
+  constructor(private diaryService: DiaryService, private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveDiaries();
@@ -41,11 +42,9 @@ export class DiaryListComponent implements OnInit {
   setActiveDiary(diary, index) {
     this.selectedDiary = diary;
     this.selectedIndex = index;
-  }
 
-  // setActiveDiary(diary) {
-  //   this.selectedDiary = diary;
-  // }
+    this.router.navigate(['diary/', diary.id]);
+  }
 
   removeAllDiaries() {
     this.diaryService.getAll()

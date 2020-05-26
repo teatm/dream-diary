@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { DiaryService } from 'src/app/services/diary.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-diary-detail',
   templateUrl: './diary-detail.component.html',
   styleUrls: ['./diary-detail.component.css']
 })
 export class DiaryDetailComponent implements OnInit {
-  currentDiary = null;
+  diary = null;
   message = '';
+  removable = true;
+  selectable = true;
 
   constructor(private diaryService: DiaryService,
               private route: ActivatedRoute,
@@ -25,7 +26,7 @@ export class DiaryDetailComponent implements OnInit {
     this.diaryService.get(id)
       .subscribe(
         data => {
-          this.currentDiary = data;
+          this.diary = data;
           console.log(data);
         },
         error => {
@@ -35,11 +36,12 @@ export class DiaryDetailComponent implements OnInit {
   }
 
   updateDiary() {
-    this.diaryService.update(this.currentDiary.id, this.currentDiary)
+    this.diaryService.update(this.diary.id, this.diary)
       .subscribe(
         response => {
           console.log(response);
           this.message = 'The diary was updated successfully';
+          this.router.navigate(['diary-list']);
         },
         error => {
           console.log(error);
@@ -48,15 +50,18 @@ export class DiaryDetailComponent implements OnInit {
   }
 
   deleteDiary() {
-    this.diaryService.delete(this.currentDiary.id)
+    this.diaryService.delete(this.diary.id)
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/diaries']);
+          this.router.navigate(['diary-list']);
         },
         error => {
           console.log(error);
         }
       );
+  }
+
+  removeDiaryItem() {
   }
 }

@@ -10,6 +10,9 @@ import { DiaryDetailComponent } from './components/diary-detail/diary-detail.com
 import { DiaryListComponent } from './components/diary-list/diary-list.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
