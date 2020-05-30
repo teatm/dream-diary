@@ -1,0 +1,38 @@
+<div class="container" style="margin-top: 70px">
+    <div class="col-md-8">
+        <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name" />
+        <div class="input-group-append">
+            <button class="btn btn-outline secondary" type="button" click="searchName()">
+                Search
+            </button>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items; let i = index;" [class.active]="i==selectedIndex">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.category.name}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="setActiveItem(item, i)">Show details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card text-center" *ngIf="selectedItem">
+        <div class="card-header">
+            # {{selectedItem.id}}
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{selectedItem.name}}</h4>
+            <p class="card-text">{{selectedItem.name}}</p>
+        </div>
+    </div>
+</div>>

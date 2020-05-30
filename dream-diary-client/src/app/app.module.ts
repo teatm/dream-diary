@@ -13,6 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ItemListComponent } from './components/item-list/item-list.component';
+import { ItemCreateComponent } from './components/item-create/item-create.component';
+import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DiaryListComponent,
     HeaderComponent,
     FooterComponent,
+    ItemListComponent,
+    ItemCreateComponent,
+    ItemDetailComponent,
   ],
   imports: [
     BrowserModule,

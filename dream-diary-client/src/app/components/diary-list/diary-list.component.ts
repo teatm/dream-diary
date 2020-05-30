@@ -46,19 +46,6 @@ export class DiaryListComponent implements OnInit {
     this.router.navigate(['diary/', diary.id]);
   }
 
-  removeAllDiaries() {
-    this.diaryService.getAll()
-      .subscribe(
-        response => {
-          console.log(response);
-          this.retrieveDiaries();
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
-
   searchDate() {
     this.diaryService.findByDate(this.date)
       .subscribe(

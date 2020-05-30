@@ -1,60 +1,43 @@
-<!-- <div class="jumbotron" style="background-color: #fff; height: calc(95vh);">
-    <h1>Diary Demo</h1>
-    <p class="lead">
-      This demo shows how to integrate Bootstrap 4 with Angular 7  
-    </p>
-    <a class="btn btn-lg btn-primary" href="" role="button">View tutorial</a>
-  </div> -->
-
 <div class="container" style="margin-top: 70px;">
-
-<div class="col-md-8">
-    <div class="input-group mb-3">
-        <input 
-            type="text" 
-            class="form-control" 
-            placeholder="Search by date" 
-            [(ngModel)]="date"
-        />
-        <div class="input-group-append">
-            <button class="btn btn-outline secondary" type="button" (click)="searchDate()">
-                Search
-            </button>
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by date" [(ngModel)]="date" />
+            <div class="input-group-append">
+                <button class="btn btn-outline secondary" type="button" (click)="searchDate()">
+                    Search
+                </button>
+            </div>
         </div>
     </div>
-</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Date</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let diary of diaries; let i = index" [class.active]="i == selectedIndex">
 
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Date</th>
-        <th>Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let diary of diaries; let i = index" [class.active]="i == selectedIndex">
-
-        <td>{{ diary.id }}</td>
-        <td> {{ diary.date }}</td>
-        <td> {{ diary.content }}</td>
-        <td>
-        <button class="btn btn-primary" (click)="setActiveDiary(diary, i)"> Show details</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<div class="card text-center" *ngIf="selectedDiary">
-    <div class="card-header">
-        # {{selectedDiary.id}}
-    </div>
-    <div class="card-block">
-        <h4 class="card-title">{{selectedDiary.date}}</h4>
-        <p class="card-text">
-        {{selectedDiary.content}}
-        </p>
-    </div>
-
+                <td>{{ diary.id }}</td>
+                <td> {{ diary.date }}</td>
+                <td> {{ diary.content }}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="setActiveDiary(diary, i)"> Show details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card text-center" *ngIf="selectedDiary">
+        <div class="card-header">
+            # {{selectedDiary.id}}
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{selectedDiary.date}}</h4>
+            <p class="card-text">
+                {{selectedDiary.content}}
+            </p>
+        </div>
     </div>
 </div>

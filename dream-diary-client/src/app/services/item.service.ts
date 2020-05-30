@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:8080/api/diaries'
+const baseUrl = 'http://localhost:8080/api/items'
 
 @Injectable({
   providedIn: 'root'
 })
-export class DiaryService {
+export class ItemService {
 
   constructor(private http: HttpClient) { }
 
@@ -23,14 +23,15 @@ export class DiaryService {
   }
 
   update(id, data) {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.put(`${baseUrl}/${id}`, data)
   }
 
   delete(id) {
-    return this.http.delete(`${baseUrl}/${id}`);
+    return this.http.delete(`${baseUrl}/${id}`)
   }
 
-  findByDate(date) {
-    return this.http.get(`${baseUrl}?date=${date}`)
+  findByName(name) {
+    return this.http.get(`${baseUrl}?name=${name}`)
   }
+
 }
