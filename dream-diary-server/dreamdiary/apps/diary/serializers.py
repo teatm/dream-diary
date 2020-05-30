@@ -1,34 +1,7 @@
 from rest_framework import serializers
-from .models import Diary, DiaryItem, Item, ItemCategory
-
-
-class ItemCategorySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = ItemCategory
-        # fields = '__all__'
-        fields = ('id',)
-        # extra_kwargs = {
-        #     "id": {
-        #         "read_only": False,
-        #         "required": False,
-        #     },
-        # }
-
-
-class ItemSerializer(serializers.ModelSerializer):
-    category = ItemCategorySerializer()
-
-    class Meta:
-        model = Item
-        fields = '__all__'
-        # fields = ('id', 'name', 'category')
-        extra_kwargs = {
-            "id": {
-                "read_only": False,
-                "required": False,
-            },
-        }
+from .models import Diary, DiaryItem
+from dreamdiary.apps.item.models import Item, ItemCategory
+from dreamdiary.apps.item.serializers import ItemSerializer, ItemCategorySerializer
 
 
 class DiaryItemSerializer(serializers.ModelSerializer):

@@ -9,25 +9,22 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('item', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Diary',
+            name='ItemCategory',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField()),
-                ('content', models.CharField(default='', max_length=200)),
+                ('name', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
-            name='DiaryItem',
+            name='Item',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('price', models.IntegerField(blank=True, default=0)),
-                ('diary', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='diaryItems', to='diary.Diary')),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='item.Item')),
+                ('name', models.CharField(max_length=200)),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='item.ItemCategory')),
             ],
         ),
     ]

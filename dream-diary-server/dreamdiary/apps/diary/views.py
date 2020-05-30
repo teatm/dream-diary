@@ -49,5 +49,4 @@ def diary_detail(request, pk):
         if diary is not None:
             diary.delete()
             return JsonResponse({'message': 'Diary successfully removed!'}, status=status.HTTP_204_NO_CONTENT)
-
         return JsonResponse({'message': 'No Diary found'}, status=status.HTTP_204_NO_CONTENT)

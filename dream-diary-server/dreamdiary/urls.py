@@ -20,4 +20,5 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('dreamdiary.apps.diary.urls')),
+    url(r'^', include('dreamdiary.apps.item.urls')),
 ]
