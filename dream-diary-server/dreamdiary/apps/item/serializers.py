@@ -6,8 +6,8 @@ class ItemCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ItemCategory
-        # fields = '__all__'
-        fields = ('id',)
+        fields = '__all__'
+        # fields = ('id',)
         # extra_kwargs = {
         #     "id": {
         #         "read_only": False,
