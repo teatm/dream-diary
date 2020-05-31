@@ -33,5 +33,4 @@ export class ItemService {
   findByName(name) {
     return this.http.get(`${baseUrl}?name=${name}`)
   }
-
 }

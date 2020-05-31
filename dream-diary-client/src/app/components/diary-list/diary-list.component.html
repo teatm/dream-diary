@@ -18,26 +18,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let diary of diaries; let i = index" [class.active]="i == selectedIndex">
-
-                <td>{{ diary.id }}</td>
-                <td> {{ diary.date }}</td>
-                <td> {{ diary.content }}</td>
+            <tr *ngFor="let diary of diaries; let i = index" [class.active]="i == selectedIndex" (click)="setActiveDiary(diary, i)">
+                <td>{{diary.id}}</td>
+                <td> {{diary.date}}</td>
+                <td> {{diary.content}}</td>
                 <td>
-                    <button class="btn btn-primary" (click)="setActiveDiary(diary, i)"> Show details</button>
+                    <button class="btn btn-primary" (click)="setActiveDiary(diary, i)">details</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div class="card text-center" *ngIf="selectedDiary">
-        <div class="card-header">
-            # {{selectedDiary.id}}
-        </div>
-        <div class="card-block">
-            <h4 class="card-title">{{selectedDiary.date}}</h4>
-            <p class="card-text">
-                {{selectedDiary.content}}
-            </p>
-        </div>
-    </div>
 </div>

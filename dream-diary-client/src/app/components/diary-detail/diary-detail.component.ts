@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./diary-detail.component.css']
 })
 export class DiaryDetailComponent implements OnInit {
+
   diary = null;
   message = '';
   removable = true;
@@ -62,6 +63,7 @@ export class DiaryDetailComponent implements OnInit {
       );
   }
 
-  removeDiaryItem() {
+  backToList() {
+    this.router.navigate(['diary-list']);
   }
 }

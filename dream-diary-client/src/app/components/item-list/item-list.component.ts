@@ -43,11 +43,11 @@ export class ItemListComponent implements OnInit {
     this.selectedItem = item;
     this.selectedIndex = index;
 
-    this.router.navigate(['item/'], item.id);
+    this.router.navigate(['item/', item.id]);
   }
 
   searchName() {
-    this.itemService.findByName(name)
+    this.itemService.findByName(this.name)
       .subscribe(
         data => {
           this.items = data;

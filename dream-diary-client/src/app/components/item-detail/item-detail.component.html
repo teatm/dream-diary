@@ -1,1 +1,32 @@
-<p>item-detail works!</p>
+<div class="container" style="margin-top: 70px">
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <div *ngIf="item" class="edit-form">
+                <div>
+                    <button class="btn btn-secondary" (click)="backToList()">Back</button>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="id">Id</label>
+                        <input [(ngModel)]="item.id" type="text" id="id" name="id" class="form-control" readonly>
+
+                        <label for="name">Name</label>
+                        <input [(ngModel)]="item.name" type="text" id="name" name="name" class="form-control">
+
+                        <label for="itemCategory">Category</label>
+                        <select id="itemCategoryId" name="itemCategoryId" class="form-control" [(ngModel)]="item.category" (change)="retrieveItemCategories()">
+                            <option value="" disabled>Choose a category</option>
+                            <option [ngValue]="itemCategory.id" *ngFor="let itemCategory of itemCategories">
+                                {{itemCategory.name}}
+                            </option>
+                        </select>
+                    </div>
+                </form>
+                <div>
+                    <button class="btn btn-danger" (click)="deleteItem()">Delete</button>
+                    <button class="btn btn-success float-right" (click)="updateItem()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
