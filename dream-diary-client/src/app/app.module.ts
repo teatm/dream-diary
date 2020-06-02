@@ -5,17 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
 import { AppComponent } from './app.component';
-import { DiaryCreateComponent } from './components/diary-create/diary-create.component';
-import { DiaryDetailComponent } from './components/diary-detail/diary-detail.component';
-import { DiaryListComponent } from './components/diary-list/diary-list.component';
+import { DiaryCreateComponent } from './components/diary/diary-create/diary-create.component';
+import { DiaryDetailComponent } from './components/diary/diary-detail/diary-detail.component';
+import { DiaryListComponent } from './components/diary/diary-list/diary-list.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ItemListComponent } from './components/item-list/item-list.component';
-import { ItemCreateComponent } from './components/item-create/item-create.component';
-import { ItemDetailComponent } from './components/item-detail/item-detail.component';
+import { ItemListComponent } from './components/item/item-list/item-list.component';
+import { ItemCreateComponent } from './components/item/item-create/item-create.component';
+import { ItemDetailComponent } from './components/item/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
