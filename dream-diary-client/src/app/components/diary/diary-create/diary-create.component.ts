@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiaryService } from '../../services/diary.service';
+import { DiaryService } from '../../../services/diary.service';
 import { Router } from '@angular/router'
 
 @Component({
