@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import JsonResponse
 
 from rest_framework import status
@@ -12,10 +13,11 @@ from .serializers import ItemSerializer, ItemCategorySerializer
 def item_list(request):
     if request.method == 'GET':
         items = Item.objects.all()
+        item_categories = ItemCategory.objects.all()
 
         name = request.GET.get('name', None)
         if name is not None:
-            items = items.filter(name__icontains=name)
+            items = items.filter(Q(name__icontains=name) | Q(category__name__icontains=name))
 
         item_serializer = ItemSerializer(items, many=True)
         return JsonResponse(item_serializer.data, safe=False)

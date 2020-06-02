@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import JsonResponse
 
 from rest_framework import status
@@ -15,7 +16,7 @@ def diary_list(request):
 
         date = request.GET.get('date', None)
         if date is not None:
-            diaries = diaries.filter(date__icontains=date)
+            diaries = diaries.filter(Q(date__icontains=date) | Q(content__icontains=date))
 
         diaries_serializer = DiarySerializer(diaries, many=True)
         return JsonResponse(diaries_serializer.data, safe=False)
