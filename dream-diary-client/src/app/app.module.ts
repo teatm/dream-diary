@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from  '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DiaryCreateComponent } from './components/diary/diary-create/diary-create.component';
@@ -30,6 +33,9 @@ import { ItemDetailComponent } from './components/item/item-detail/item-detail.c
     ItemDetailComponent,
   ],
   imports: [
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

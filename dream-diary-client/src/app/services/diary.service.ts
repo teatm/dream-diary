@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 
 const baseUrl = 'http://localhost:8080/api/diaries'
 
@@ -32,5 +34,18 @@ export class DiaryService {
 
   findByDate(date) {
     return this.http.get(`${baseUrl}?date=${date}`)
+  }
+
+  search(term) {
+    var diaries = this.findByDate(term).pipe(
+      debounceTime(300),
+      map(
+        (data:any) => {
+          return data.length != 0 ? data as any[] : [{"DiaryContent": "No record found"} as any];
+        }
+      )
+    )
+
+    return diaries;
   }
 }

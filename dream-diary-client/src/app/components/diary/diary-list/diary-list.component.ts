@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DiaryService } from 'src/app/services/diary.service'
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-diary-list',
@@ -14,10 +15,25 @@ export class DiaryListComponent implements OnInit {
   selectedIndex = -1;
   date = '';
 
+  searchTerm: FormControl = new FormControl();
+  searchDiaries = <any>[];
+
   constructor(private diaryService: DiaryService, private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveDiaries();
+
+    this.searchTerm.valueChanges.subscribe(
+      term => {
+        if (term != "") {
+          this.diaryService.search(term).subscribe(
+            data => {
+              this.searchDiaries = data as any[]
+            }
+          )
+        }
+      }
+    )
   }
 
   retrieveDiaries() {

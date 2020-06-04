@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../../services/item.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-item-list',
@@ -14,10 +15,25 @@ export class ItemListComponent implements OnInit {
   selectedIndex = -1;
   name = '';
 
+  searchTerm: FormControl = new FormControl();
+  searchItems = <any>[];
+
   constructor(private itemService: ItemService, private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveItems();
+
+    this.searchTerm.valueChanges.subscribe(
+      term => {
+        if (term != "") {
+          this.itemService.search(term).subscribe(
+            data => {
+              this.searchItems = data as any[];
+            }
+          )
+        }
+      }
+    )
   }
 
   retrieveItems() {
